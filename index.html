@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.0/math.min.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MathGenius</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h2>Resolver problemas matemáticos</h2>
+<input type="text" id="problema" placeholder="Escribe un problema matemático">
+<button onclick="resolverProblema()">Resolver</button>
+<p>Solución: <span id="solucion"></span></p>
+
+<script>
+    function resolverProblema() {
+    const problema = document.getElementById('problema').value;
+
+    try {
+        const resultado = math.evaluate(problema);
+        document.getElementById('solucion').textContent = resultado;
+
+        // Generar un paso básico
+        document.getElementById('solucion').textContent += ` (Resolviendo: ${problema})`;
+    } catch (error) {
+        document.getElementById('solucion').textContent = 'Error: ' + error.message;
+    }
+}
+
+    function resolverProblema() {
+        const problema = document.getElementById('problema').value;
+
+        try {
+            const resultado = math.evaluate(problema); // Usando Math.js para calcular
+            document.getElementById('solucion').textContent = resultado;
+        } catch (error) {
+            document.getElementById('solucion').textContent = 'Error: ' + error.message;
+        }
+    }
+</script>
+
     <h1>Bienvenido a MathGenius</h1>
     <p>Resuelve problemas matemáticos con la ayuda de inteligencia artificial.</p>
     
