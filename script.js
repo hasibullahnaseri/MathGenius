@@ -38,3 +38,8 @@ function solve() {
         document.getElementById('result').textContent = 'Error en la expresión';
     }
 }
+
+    } catch (error) {
+        document.getElementById('result').textContent = 'Error en la expresión';
+    }
+}
