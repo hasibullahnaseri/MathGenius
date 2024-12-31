@@ -1,85 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.0/math.min.js"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MathGenius</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>Resolver problemas matemáticos</h2>
-<input type="text" id="problema" placeholder="Escribe un problema matemático">
-<button onclick="resolverProblema()">Resolver</button>
-<p>Solución: <span id="solucion"></span></p>
-
-<script>
-    function resolverProblema() {
-    const problema = document.getElementById('problema').value;
-
-    try {
-        const resultado = math.evaluate(problema);
-        document.getElementById('solucion').textContent = resultado;
-
-        // Generar un paso básico
-        document.getElementById('solucion').textContent += ` (Resolviendo: ${problema})`;
-    } catch (error) {
-        document.getElementById('solucion').textContent = 'Error: ' + error.message;
-    }
-}
-
-    function resolverProblema() {
-        const problema = document.getElementById('problema').value;
-
-        try {
-            const resultado = math.evaluate(problema); // Usando Math.js para calcular
-            document.getElementById('solucion').textContent = resultado;
-        } catch (error) {
-            document.getElementById('solucion').textContent = 'Error: ' + error.message;
-        }
-    }
-</script>
-
     <h1>Bienvenido a MathGenius</h1>
-    <p>Resuelve problemas matemáticos con la ayuda de inteligencia artificial.</p>
-    
-    <h2>Calculadora Básica</h2>
-    <input type="number" id="num1" placeholder="Número 1">
-    <input type="number" id="num2" placeholder="Número 2">
-    <button onclick="calcular()">Calcular</button>
-    <p>Resultado: <span id="resultado"></span></p>
-
-    <h2>Generar Cuestionarios</h2>
-    <form id="cuestionario">
-        <label for="pregunta">Escribe un problema matemático:</label><br>
-        <input type="text" id="pregunta" placeholder="Ejemplo: 3x + 2 = 8"><br><br>
-        <button type="button" onclick="generarCuestionario()">Generar</button>
-    </form>
-    <div id="resultadoCuestionario"></div>
-
-    <canvas id="miGrafico" width="400" height="200"></canvas>
+    <div>
+        <input type="text" id="expression" placeholder="Ingresa una expresión matemática">
+        <button onclick="solve()">Resolver</button>
+    </div>
+    <div id="result"></div>
+    <canvas id="myChart"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        function calcular() {
-            const num1 = parseFloat(document.getElementById('num1').value);
-            const num2 = parseFloat(document.getElementById('num2').value);
-            const resultado = num1 + num2;
-            document.getElementById('resultado').textContent = resultado;
-        }
-
-        function generarCuestionario() {
-            const pregunta = document.getElementById('pregunta').value;
-            const resultadoCuestionario = document.getElementById('resultadoCuestionario');
-            resultadoCuestionario.innerHTML = `
-                <h3>Preguntas relacionadas:</h3>
-                <ul>
-                    <li>Resuelve: ${pregunta} + 1</li>
-                    <li>Encuentra el valor de x en: 2(${pregunta})</li>
-                    <li>Simplifica: (${pregunta})^2</li>
-                </ul>
-            `;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+
