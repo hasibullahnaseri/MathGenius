@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathGenius - Calculadora Avanzada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+        .calculator-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .display {
+            font-size: 1.5rem;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 20px);
+            text-align: right;
+        }
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .key {
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .key:hover {
+            background: #0056b3;
+        }
+        .key.special {
+            background: #28a745;
+        }
+        .key.special:hover {
+            background: #1c7c31;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>MathGenius - Calculadora Avanzada</h1>
+        <input type="text" id="display" class="display" placeholder="Escribe tu ecuación aquí...">
+        <div class="keyboard">
+            <!-- Números -->
+            <button class="key">7</button>
+            <button class="key">8</button>
+            <button class="key">9</button>
+            <button class="key special">/</button>
+            <button class="key">4</button>
+            <button class="key">5</button>
+            <button class="key">6</button>
+            <button class="key special">*</button>
+            <button class="key">1</button>
+            <button class="key">2</button>
+            <button class="key">3</button>
+            <button class="key special">-</button>
+            <button class="key">0</button>
+            <button class="key">.</button>
+            <button class="key">=</button>
+            <button class="key special">+</button>
+
+            <!-- Operaciones avanzadas -->
+            <button class="key special">sin</button>
+            <button class="key special">cos</button>
+            <button class="key special">tan</button>
+            <button class="key special">log</button>
+            <button class="key special">π</button>
+            <button class="key special">√</button>
+            <button class="key special">^</button>
+            <button class="key special">C</button>
+        </div>
+    </div>
+    <script>
+        const display = document.getElementById('display');
+        const keys = document.querySelectorAll('.key');
+
+        keys.forEach(key => {
+            key.addEventListener('click', () => {
+                const value = key.textContent;
+
+                if (value === '=') {
+                    try {
+                        display.value = eval(display.value.replace('π', Math.PI));
+                    } catch {
+                        display.value = 'Error';
+                    }
+                } else if (value === 'C') {
+                    display.value = '';
+                } else if (value === '√') {
+                    display.value = Math.sqrt(eval(display.value));
+                } else if (value === 'sin') {
+                    display.value = Math.sin(eval(display.value));
+                } else if (value === 'cos') {
+                    display.value = Math.cos(eval(display.value));
+                } else if (value === 'tan') {
+                    display.value = Math.tan(eval(display.value));
+                } else if (value === 'log') {
+                    display.value = Math.log10(eval(display.value));
+                } else if (value === '^') {
+                    display.value += '**';
+                } else {
+                    display.value += value;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
