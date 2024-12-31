@@ -39,6 +39,7 @@ function solve() {
     }
 }
 
+
     } catch (error) {
         document.getElementById('result').textContent = 'Error en la expresión';
     }
